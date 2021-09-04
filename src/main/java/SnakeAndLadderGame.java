@@ -8,8 +8,15 @@ import java.util.List;
 public class SnakeAndLadderGame implements Observer {
     private Board board;
     private List<Player> playerlist;
-    private Dice dice;
     private int rank = 1;
+
+//TODO : there are 3 kind of dice with 3 rolling style //type 1,type 2-select max value and min value,type 3
+//TODO : user can select a dice and rolling style. hence rollDice will be different for each dice
+//apply design pattern
+//dice interface
+//roll dice()
+//3 dice classes extending dice and implementing this dice method
+//chess pacman
 
     public SnakeAndLadderGame() {
         //board size
@@ -18,12 +25,17 @@ public class SnakeAndLadderGame implements Observer {
         //number of player
         Notifier notifier = new Notifier(this);
         this.board = new Board(0, 100, 100, null, null, notifier);
-        Player player1 = new Player("Deb");
-        Player player2 = new Player("Subho");
-        Player player3 = new Player("Preety");
-        Player player4 = new Player("Ria");
+        GetDiceFactory diceFactory = new GetDiceFactory();
+        Dice dice1 = diceFactory.getDice("DicePro");
+        Player player1 = new Player("Deb", dice1);
+        Dice dice2 = diceFactory.getDice("DiceDefault");
+        Player player2 = new Player("Subho", dice2);
+        Dice dice3 = diceFactory.getDice("DicePro");
+        Player player3 = new Player("Preety", dice3);
+        Dice dice4 = diceFactory.getDice("DicePro");
+        Player player4 = new Player("Ria", dice4);
         playerlist = Arrays.asList(player1, player2, player3, player4);
-        this.dice = new Dice(1, 6);
+
     }
 
     public static void main(String[] args) {
@@ -40,7 +52,7 @@ public class SnakeAndLadderGame implements Observer {
             Integer playerTurn = turn++ % 4;
 
             if (!playerlist.get(playerTurn).hasWon()) {
-                playerlist.get(playerTurn).play(dice, board);
+                playerlist.get(playerTurn).play(board);
             }
         }
         System.out.println(playerlist);

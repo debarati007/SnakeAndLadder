@@ -25,7 +25,7 @@ public class Board {
         if (newPosition == 100) {
             notifier.brodcast(player);
         }
-        if(newPosition>100){
+        if (newPosition > 100) {
             return position;
         }
         return diceValue + position;

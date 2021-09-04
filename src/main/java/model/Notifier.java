@@ -6,7 +6,8 @@ public class Notifier {
     public Notifier(Observer observer) {
         this.observer = observer;
     }
-    public void brodcast(Player player){
+
+    public void brodcast(Player player) {
         observer.notify(player);
     }
 }

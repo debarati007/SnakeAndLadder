@@ -4,12 +4,16 @@ public class Player {
     private String name;
     private Integer position = 0;
     private Integer rank;
-    private Dice dice;
+    private Dice dice =  GetDiceFactory.getInstance().getDice("DiceDefault");
 
     public Player(String name, Dice dice) {
         this.name = name;
         this.dice = dice;
 
+    }
+
+    public Player(String name) {
+        this.name = name;
     }
 
 

@@ -25,19 +25,15 @@ public class SnakeAndLadderGame implements Observer {
         //number of player
         Notifier notifier = new Notifier(this);
         this.board = new Board(0, 100, 100, null, null, notifier);
-        GetDiceFactory diceFactory = new GetDiceFactory();
-        Dice dice1 = diceFactory.getDice("DicePro");
-        Player player1 = new Player("Deb", dice1);
-        Dice dice2 = diceFactory.getDice("DiceDefault");
-        Player player2 = new Player("Subho", dice2);
-        Dice dice3 = diceFactory.getDice("DicePro");
-        Player player3 = new Player("Preety", dice3);
-        Dice dice4 = diceFactory.getDice("DicePro");
-        Player player4 = new Player("Ria", dice4);
+        GetDiceFactory diceFactory = GetDiceFactory.getInstance();
+        Dice dicePro = diceFactory.getDice("DicePro");
+        Dice dicePremium = diceFactory.getDice("DicePremium");
+        Player player1 = new Player("Deb", dicePro);
+        Player player2 = new Player("Subho");
+        Player player3 = new Player("Preety", dicePremium);
+        Player player4 = new Player("Ria", dicePro);
         playerlist = Arrays.asList(player1, player2, player3, player4);
-
     }
-
     public static void main(String[] args) {
         SnakeAndLadderGame snakeAndLadderGame = new SnakeAndLadderGame();
         snakeAndLadderGame.start();

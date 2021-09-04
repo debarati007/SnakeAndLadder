@@ -27,8 +27,10 @@ public class SnakeAndLadderGame implements Observer {
         this.board = new Board(0, 100, 100, null, null, notifier);
         GetDiceFactory diceFactory = GetDiceFactory.getInstance();
         Dice dicePro = diceFactory.getDice("DicePro");
+        System.out.println(dicePro);
         Dice dicePremium = diceFactory.getDice("DicePremium");
         Player player1 = new Player("Deb", dicePro);
+        System.out.println(diceFactory.getDice("DicePro"));
         Player player2 = new Player("Subho");
         Player player3 = new Player("Preety", dicePremium);
         Player player4 = new Player("Ria", dicePro);
